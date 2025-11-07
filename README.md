@@ -135,18 +135,3 @@ docker run -p 8000:8000 smart_health_app
   "humidity": 48
 }
 
-## Alert Notifications
-
-When abnormal readings occur:
-
-The cloud function sends an alert notification via email or SMS.
-
-The dashboard highlights the parameter in red.
-
-Alert messages like:
-
-⚠️ ALERT: Patient heart rate exceeded 120 bpm at 10:02 AM.
-
-
-The caregiver/doctor can log in to check detailed data.
-
