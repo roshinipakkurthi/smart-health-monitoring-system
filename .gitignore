@@ -1,0 +1,12 @@
+# Ignore virtual environments
+venv/
+env/
+.ai310/
+ai310/
+Lib/
+__pycache__/
+*.pyc
+
+# Ignore IDE files
+.vscode/
+.idea/

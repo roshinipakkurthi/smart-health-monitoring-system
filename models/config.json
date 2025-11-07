@@ -1,0 +1,14 @@
+{
+  "feature_order": [
+    "heart_rate",
+    "sleep_hours",
+    "activity_level",
+    "temperature"
+  ],
+  "threshold": 0.14600000000000002,
+  "rule_safety_net": {
+    "hr_high": 110,
+    "sleep_low": 5.0,
+    "temp_high": 37.8
+  }
+}
