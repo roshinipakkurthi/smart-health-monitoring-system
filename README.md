@@ -151,7 +151,6 @@ Message: Patient Device #001 - Heart rate recorded at 120 bpm (10:02 AM).
 Recommended: Immediate attention.
 
 ---
----
 ## Alert Notifications
 
 When abnormal readings occur:
