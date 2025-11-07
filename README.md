@@ -135,22 +135,6 @@ docker run -p 8000:8000 smart_health_app
   "humidity": 48
 }
 
-Heart Rate: 85 bpm
-Body Temperature: 36.9 °C
-Humidity: 48 %
-Sending data to cloud...
-Data uploaded successfully!
-
-Heart Rate: 120 bpm ⚠️ (High)
-Body Temperature: 36.8 °C ✅
-Humidity: 46% ✅
-Alert triggered: High heart rate detected at 10:02 AM
-
-Subject: ⚠️ Health Alert - High Heart Rate Detected
-Message: Patient Device #001 - Heart rate recorded at 120 bpm (10:02 AM).
-Recommended: Immediate attention.
-
----
 ## Alert Notifications
 
 When abnormal readings occur:
