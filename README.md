@@ -135,3 +135,21 @@ docker run -p 8000:8000 smart_health_app
   "humidity": 48
 }
 
+| Parameter  | Normal Range | Alert Condition |
+| ---------- | ------------ | --------------- |
+| Heart Rate | 60–100 bpm   | <60 or >100 bpm |
+| Body Temp  | 36–37.5 °C   | <35 or >38 °C   |
+| Humidity   | 40–60%       | <30% or >70%    |
+
+| Parameter  | Live Value | Status   | Range      |
+| ---------- | ---------- | -------- | ---------- |
+| Heart Rate | 120 bpm    | ⚠️ High  | 60–100 bpm |
+| Body Temp  | 36.8 °C    | ✅ Normal | 36–37.5 °C |
+| Humidity   | 45 %       | ✅ Normal | 40–60 %    |
+
+⚠️ ALERT: Heart Rate exceeded safe limit!
+Patient ID: health_device_01
+Reading: 120 bpm at 10:02 AM
+Recommended: Immediate medical attention.
+
+
