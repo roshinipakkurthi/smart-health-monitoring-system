@@ -1,11 +1,19 @@
-# Smart Health Monitoring System (Federated Learning + TinyML + XAI + Prompt Engineering)
+# Smart Health Monitoring System
 
-This repository contains a complete, end-to-end final year project that showcases:
-- **Federated Learning** (Flower + TensorFlow demo)
-- **TinyML** (TensorFlow Lite conversion and edge-ready model)
-- **Explainable AI (XAI)** (SHAP for RandomForest model interpretability)
-- **Prompt Engineering** (Hugging Face `transformers` to generate personalized advice)
-- **API** (FastAPI to serve predictions + advice)
+A connected IoT-based health monitoring system that continuously tracks vital parameters (e.g., heart rate, body temperature, ambient conditions) and sends data to the cloud for remote monitoring and alerting. This repository contains hardware schematics/notes, microcontroller firmware, cloud integration code and a simple dashboard example.
+
+---
+
+## Overview
+This project demonstrates an end-to-end Smart Health Monitoring System:
+- Hardware reads vitals (pulse, body temp, optional SpO₂/ECG) using sensors attached to a microcontroller.
+- Data is packaged and sent to a cloud endpoint (HTTP/MQTT).
+- Cloud stores timeseries data, runs threshold checks and sends alerts.
+- A web/mobile dashboard displays live values and historical trends.
+
+---
+
+## How It Works (Step-by-step)
 
 ## 1) Setup (Windows PowerShell / macOS / Linux)
 
@@ -104,9 +112,58 @@ docker run -p 8000:8000 smart_health_app
 5. `python tinyml/train_tf_model.py` → `python tinyml/convert_to_tflite.py`  
 6. Federated Learning: `python federated/server.py` + two `python federated/client.py --client_id X`
 
-## Viva / Resume Highlights
-- Privacy-preserving training with FL (Flower)
-- Edge-ready TFLite model (TinyML)
-- Interpretable model with SHAP
-- Prompt-engineered recommendations via LLM
-- FastAPI microservice + (optional) Docker
+---
+
+## OUTPUT - How It Works (Step-by-step)
+
+### 1. Sensor & Hardware Layer
+- Microcontroller (e.g., Arduino, ESP32) reads sensors at regular intervals:
+  - Pulse / heart-rate sensor (e.g., MAX30100/30102, pulse sensor)
+  - Body temperature (e.g., DS18B20, LM35)
+  - Ambient temp & humidity (DHT11 / DHT22 / BME280)
+- Microcontroller formats readings into JSON and sends via Wi-Fi (ESP modules) or GSM (SIM module).
+
+### 2. Data Transmission & Cloud Layer
+- Device posts JSON payloads to a cloud API or publishes to an MQTT broker:
+```json
+{
+  "device_id": "device_001",
+  "timestamp": "2025-11-07T09:30:00Z",
+  "heart_rate": 78,
+  "body_temp": 36.7,
+  "ambient_temp": 24.1,
+  "humidity": 48
+}
+
+Heart Rate: 85 bpm
+Body Temperature: 36.9 °C
+Humidity: 48 %
+Sending data to cloud...
+Data uploaded successfully!
+
+Heart Rate: 120 bpm ⚠️ (High)
+Body Temperature: 36.8 °C ✅
+Humidity: 46% ✅
+Alert triggered: High heart rate detected at 10:02 AM
+
+Subject: ⚠️ Health Alert - High Heart Rate Detected
+Message: Patient Device #001 - Heart rate recorded at 120 bpm (10:02 AM).
+Recommended: Immediate attention.
+
+---
+---
+## Alert Notifications
+
+When abnormal readings occur:
+
+The cloud function sends an alert notification via email or SMS.
+
+The dashboard highlights the parameter in red.
+
+Alert messages like:
+
+⚠️ ALERT: Patient heart rate exceeded 120 bpm at 10:02 AM.
+
+
+The caregiver/doctor can log in to check detailed data.
+
